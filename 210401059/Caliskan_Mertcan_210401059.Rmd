@@ -72,3 +72,31 @@ returns_count
 barplot(returns_count, main="Returns Distribution", col=c("skyblue", "salmon"), legend=TRUE, xlab="Returns", ylab="Customer Count")
 
 ```
+# Q4 : Veri seti ön işlemesi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+myDF$`Product Category` <- as.factor(myDF$`Product Category`)
+myDF$`Total Purchase Amount` <- as.numeric(gsub(",", ".", myDF$`Total Purchase Amount`))
+
+```
+
+**Product Category Sütununun Factor Tipine Dönüştürülmesi:**
+
+"Product Category" sütununu faktör (factor) türüne dönüştürür. Bu işlem, kategori bilgisi içeren sütunun analizde kullanılabilir hale getirilmesini sağlar.
+
+**Total Purchase Amount Sütunundaki Sayısal Değerlerin Düzenlenmesi:**
+
+ "Total Purchase Amount" sütunundaki sayısal değerlerin düzenlenmesini sağlar. Bu işlemde, virgülle ayrılmış ondalık değerler, R'ın anlayabileceği formata çevrilmektedir.
+Bu işlemlerin sonucunda, "Product Category" sütunu faktör tipine dönüştürülmüş, "Total Purchase Amount" sütunundaki sayısal değerlerin ondalık ayracı düzenlenmiş ve sayısal formata çevrilmiştir. Bu tür ön işlemler, veri setinin analiz ve modelleme süreçlerinde daha uygun hale getirilmesine yardımcı olur.
+
+Düzenlenmiş grafik aşağıda verilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+myDF$Returns[is.na(myDF$Returns)] <- 0
+myDF
+
+```
+```{r, include=FALSE}
+source("Q4_tests_Mertcan_Caliskan_210401059.R")
+```
