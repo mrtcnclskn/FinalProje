@@ -16,3 +16,59 @@ Bu projenin temel amacı, müşteri iade oranlarını ve churn olasılıkların�
 İkinci olarak, müşteri aktiviteleri üzerinden churn olasılıkları değerlendirilecek ve müşteri kayıplarını minimize etmek adına stratejiler geliştirilecektir. Bu, müşteri memnuniyetini artırmak ve uzun vadeli müşteri sadakatini sağlamak amacıyla özel teklifler ve avantajlar sunmak anlamına gelebilir.
 
 Analiz etapları, R programlama dili kullanılarak veri setinin detaylı bir şekilde incelenmesini ve müşteri davranışlarının anlaşılmasını içerecek. Sonuç olarak, iade eğilimi yüksek olan müşteri segmentleri belirlenecek ve bu segmentlere özel tekliflerle müşteri sadakati artırılacaktır. Aynı zamanda, churn olasılıkları üzerinden müşteri kayıpları minimize edilerek şirketin karlılığı artırılacaktır.
+
+
+
+# Q3 : Veri seti keşifsel analizi
+
+
+"E-ticaret Müşteri Davranışı ve Satın Alma Veri Seti", Faker Python kütüphanesi kullanılarak oluşturulan sentetik bir veri setidir. Kapsamlı bir e-ticaret ortamını simüle ederek dijital pazardaki müşteri davranışının ve satın alma geçmişinin çeşitli yönlerini yakalar. Bu veri seti, e-ticaret alanında veri analizi ve tahmine dayalı modelleme için tasarlanmıştır. Müşteri kaybı tahmini, pazar sepeti analizi, öneri sistemleri ve trend analizi gibi görevlere uygundur.
+
+**Churn** ve **returns** sütunları bu proje için önemlidir veri tipi numerictir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Veri dosyasını internetten indir ve git repo'sunun içine commitle
+filename <- "ecommerce_customer_data_custom_ratios.csv"
+ 
+
+# Dosyayi ithal et
+library(readr)
+myDF <- read_csv(filename)
+```
+
+Veri seti Kaggle web sitesinden indirilmiştir ve **readr::read_csv()** fonksiyonu kullanılarak **`r class(myDF)[[1]]`** tipinde bir değişkene ithal edilmiştir. Veri boyutları aşağıdaki gibidir :
+
+- Satir sayisi : `r nrow(myDF)`
+- Satir sayisi : `r ncol(myDF)`
+
+Veri setinin ön görsellemesi aşağıda verilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ 
+myDF
+```
+
+**Churn** histogram veri gösterimi
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ hist(myDF$Churn,breaks = 20)
+```
+
+**Returns** pasta grafiği veri gösterimi
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ # Returns Pasta Grafiği
+returns_counts <- table(myDF$Returns)
+pie(returns_counts, labels = paste(names(returns_counts), ": ", returns_counts))
+```
+
+
+Bu grafik, iade durumlarına göre müşteri sayılarını gösterir. İade yapan müşterilerin sayısı ile iade yapmayan müşterilerin sayısı arasındaki dağılımı görselleştirmek için kullanılabilir. Bu, şirketin iade politikalarını değerlendirmek ve müşteri memnuniyetini artırmak için stratejiler geliştirmek için başlangıç bir nokta olabilir.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# İade yapan ve yapmayan müşteri sayıları
+returns_count <- table(myDF$Returns)
+
+# İstatistik: İade Yapan ve Yapmayan Müşteri Sayıları
+returns_count
+# İade Durumlarına Göre Müşteri Sayıları Çubuk Grafiği
+barplot(returns_count, main="Returns Distribution", col=c("skyblue", "salmon"), legend=TRUE, xlab="Returns", ylab="Customer Count")
+
+```
