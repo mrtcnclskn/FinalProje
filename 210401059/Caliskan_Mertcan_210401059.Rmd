@@ -100,3 +100,92 @@ myDF
 ```{r, include=FALSE}
 source("Q4_tests_Mertcan_Caliskan_210401059.R")
 ```
+
+
+
+# Q5 : Veri mühendisliği 
+
+Bu örnekte, Customer_ID alanı üzerinden iki veri çerçevesini iç içe birleştirdik. Bu, iki veri seti arasında birleştirme yapma örneğidir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek veri çerçeveleri oluşturma
+df1 <- data.frame(Customer_ID = c(1, 2, 3),
+                  Purchase_Amount = c(100, 150, 200))
+
+df2 <- data.frame(Customer_ID = c(2, 3, 4),
+                  Returns_Amount = c(10, 15, 20))
+
+# Veri çerçevelerini birleştirme (inner join)
+merged_df <- merge(df1, df2, by = "Customer_ID")
+
+# Oluşturulan birleştirilmiş veri çerçevesini görüntüleme
+merged_df
+
+
+```
+
+
+Müşteri aktivitelerini temsil eden bir alan içeren bir veri çerçevesi oluşturduk. Ardından, bu aktiviteleri sayarak bir tablo oluşturduk ve bu aktiviteleri gösteren bir pasta grafiği oluşturduk. Bu tür görselleştirmeler, müşteri davranışlarını daha iyi anlamamıza yardımcı olabilir.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek veri çerçevesi oluşturma
+df_activities <- data.frame(Customer_ID = c(1, 2, 3, 4, 5),
+                            Activity_Type = c("Browsing", "Purchasing", "Purchasing", "Browsing", "Purchasing"))
+
+# Müşteri aktivite türlerini sayarak bir tablo oluşturma
+activity_counts <- table(df_activities$Activity_Type)
+
+# Aktivite türlerini gösteren bir pasta grafiği oluşturma
+pie(activity_counts, labels = activity_counts, main = "Customer Activities")
+
+# Oluşturulan birleştirilmiş veri çerçevesini görüntüleme
+head(df_activities)
+
+
+```
+```{r, include=FALSE}
+source("Q5_tests_Mertcan_Caliskan_210401059.R")
+```
+
+
+
+# Q6 : Veri analizi
+
+
+Yüksek segmentteki(toplam harcamaları yüksek olan) müşterilere yönelik özel teklifler, indirimler veya bonuslar gibi ayrıcalıklar sunabiliriz. Bu, müşterilerin daha fazla alışveriş yapmalarını teşvik edebilir.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Örnek R Kodu
+# Varsayılan veri çerçevesi "myDF" üzerinden çalıştığınızı varsayalım
+
+# Total Purchase Amount'a göre sıralama
+sorted_df <- myDF[order(-myDF$`Total Purchase Amount`), ]
+
+# İlk 10 satırı seçme
+top_10 <- head(sorted_df, 10)
+
+# Gerekli sütunları seçme
+result_table <- top_10[c("Customer ID", "Total Purchase Amount", "Returns")]
+
+# Tabloyu görüntüleme
+print(result_table)
+
+```
+
+
+
+İade oranları yüksek olan kategorilere odaklanarak, bu kategorilerdeki sorunları çözmek veya müşterilere yönelik özel tekliflerle iade oranlarını düşürmeye yönelik stratejiler geliştirebiliriz.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Returns ve Product Category ilişkisini gösteren çubuk grafiği
+library(ggplot2)
+
+returns_category_plot <- ggplot(myDF, aes(x = `Product Category`, fill = Returns)) +
+  geom_bar(stat = "count", position = "stack") +
+  labs(title = "Returns ve Product Category İlişkisi",
+       x = "Product Category",
+       y = "Count") +
+  scale_fill_manual(values = c("green", "red"))  # Renkleri isteğinize göre değiştirebilirsiniz
+
+# Grafiği görüntüle
+returns_category_plot
+
+```
+```
