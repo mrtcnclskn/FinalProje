@@ -188,4 +188,46 @@ returns_category_plot <- ggplot(myDF, aes(x = `Product Category`, fill = Returns
 returns_category_plot
 
 ```
-```
+
+
+# Q7 : Sonuç değerlendirme, tavsiyeler
+
+**Proje Genelinde Yapılan Operasyonlar ve Sonuçların Değerlendirilmesi:**
+
+**Müşteri İade Oranları ve Churn Olasılıkları Analizi:**
+
+Veri analizi, müşteri iade oranları ve churn olasılıkları üzerine yapıldı. Bu analizle şirketin mevcut durumu anlaşıldı ve iyileştirme gereken alanlar belirlendi.
+
+**Müşteri Segmentasyonu ve Özel Teklifler:**
+
+Müşteri segmentasyonu yapılarak iade eğilimleri belirlendi. Özellikle hangi müşteri segmentlerinde iade eğilimi yüksek olduğu tespit edildi.
+Bu segmentlere yönelik özel teklifler geliştirme stratejileri öne çıkarıldı.
+
+**Veri Seti Ön İşlemesi:**
+
+Veri setindeki eksik ve hatalı veriler düzenlendi. Kategori sütunu faktör tipine çevrildi, sayısal değerlerin ondalık durumu düzeltildi ve eksik veriler temizlendi.
+
+**Veri Mühendisliği:**
+
+İki veritabanının birleştirilmesi ya da sentetik veri oluşturulması gibi veri mühendisliği operasyonları gerçekleştirildi. Bu, çeşitli analizlere olanak sağladı.
+
+**Veri Analizi:**
+
+İade oranları, müşteri segmentasyonu, özel tekliflerin etkisi gibi konularda çeşitli istatistiksel analizler yapıldı.
+
+**Sonuçlar ve Tavsiyeler:**
+
+İade oranları ile ürün kategorileri arasındaki ilişki, total purchase amount ve müşteri ilişkisi gibi çeşitli analizler yapıldı.
+Grafikler ve istatistiklerle desteklenen sonuçlar, şirketin müşteri iade oranlarını azaltma ve karlılığını artırma konusundaki potansiyel stratejileri gösterdi.
+Total purchase amount'u yüksek olan müşterilere ayrıcalıklar tanınması gibi stratejiler önerildi.
+
+**Sonuçların Değerlendirilmesi:**
+
+Elde edilen sonuçlar, şirketin iade oranlarını azaltma ve müşteri churn olasılıklarını minimize etme konusunda etkili olabilecek stratejiler sundu.
+Analizlerin müşteri segmentasyonu ve özel tekliflerle desteklenmesi, müşteri davranışlarının daha iyi anlaşılmasına katkı sağladı.
+
+**Tavsiyeler:**
+
+İleriki çalışmalarda müşteri memnuniyetini artırmak adına daha fazla veri toplanabilir.
+Müşteri geri bildirimleri ve anketlerle desteklenen analizler, stratejilerin daha etkili bir şekilde geliştirilmesine yardımcı olabilir.
+Teknolojik gelişmeleri takip ederek, müşteri ilişkilerini güçlendirmek ve iade oranlarını azaltmak için yeni yöntemlere odaklanılabilir.
