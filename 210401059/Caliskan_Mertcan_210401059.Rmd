@@ -1,0 +1,10 @@
+---
+title: "Proje Rapor :Mertcan Çalışkan 210401059"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı
+
+ÇALIŞKAN e-commerse şirketi olarak müşteri iade oranları ve churn olasılıkları yüksek olduğundan, şirketin karlılığını olumsuz etkileyen bir problemle karşı karşıyayız. Bu durumu çözmek için müşteri segmentasyonu ve özel tekliflerle müşteri sadakatini artırıcı stratejiler geliştirmemiz gerekmektedir.
